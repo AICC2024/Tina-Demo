@@ -166,9 +166,9 @@ export default function TinaDemo() {
 
             {selectedScenario === "Emotional Support Request" && (
               <>
-                <p><strong>Caller Name:</strong> Wayne Smith</p>
+                <p><strong>Caller Name:</strong> Paige Adams</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
-                <p><strong>Patient Name:</strong> Mary Smith</p>
+                <p><strong>Patient Name:</strong> Peggy Adams</p>
                 <p><strong>Date:</strong> {formattedDate}</p>
                 <p><strong>Time:</strong> {formattedTime}</p>
                 <p className="mt-2"><strong>Summary:</strong> Caller expressed emotional distress and the need for someone to talk to. Tina responded supportively and coordinated follow-up from a social worker or chaplain via the on-call nurse.</p>
