@@ -155,7 +155,7 @@ export default function TinaDemo() {
 
             {selectedScenario === "Notify of Loved One’s Passing" && (
               <>
-                <p><strong>Caller Name:</strong> Alan Jones</p>
+                <p><strong>Caller Name:</strong> Alice Jones</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
                 <p><strong>Patient Name:</strong> Alan Jones</p>
                 <p><strong>Date:</strong> {formattedDate}</p>
