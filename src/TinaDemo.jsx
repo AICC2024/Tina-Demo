@@ -133,9 +133,9 @@ export default function TinaDemo() {
 
             {selectedScenario === "Urgent Supply Request" && (
               <>
-                <p><strong>Caller Name:</strong> Wayne Smith</p>
+                <p><strong>Caller Name:</strong> Craig Hayes</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
-                <p><strong>Patient Name:</strong> Mary Smith</p>
+                <p><strong>Patient Name:</strong> Martha Hayes</p>
                 <p><strong>Date:</strong> {formattedDate}</p>
                 <p><strong>Time:</strong> {formattedTime}</p>
                 <p className="mt-2"><strong>Summary:</strong> Caller reported they were out of feeding bags. Tina responded empathetically, gathered necessary details, and notified the on-call nurse for urgent delivery coordination.</p>
