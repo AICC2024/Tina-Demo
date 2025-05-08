@@ -2,15 +2,22 @@
 import React, { useRef, useState } from "react";
 
 const scenarios = [
-  "Urgent Supply Request",
-  "Test Result Callback",
-  "Notify of Loved One’s Passing",
-  "Emotional Support Request"
+  "▶️ Simulate Urgent Supply Call",
+  "▶️ Hear a Test Result Callback",
+  "▶️ Experience a Bereavement Call",
+  "▶️ Try an Emotional Support Call"
 ];
+
+const scenarioKeyMap = {
+  "▶️ Simulate Urgent Supply Call": "Urgent Supply Request",
+  "▶️ Hear a Test Result Callback": "Test Result Callback",
+  "▶️ Experience a Bereavement Call": "Notify of Loved One’s Passing",
+  "▶️ Try an Emotional Support Call": "Emotional Support Request"
+};
 
 export default function TinaDemo() {
   const fullCallAudio = useRef(null);
-  const [selectedScenario, setSelectedScenario] = useState("Urgent Supply Request");
+  const [selectedScenario, setSelectedScenario] = useState("▶️ Simulate Urgent Supply Call");
 
   const now = new Date();
   const formattedDate = now.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
@@ -74,18 +81,18 @@ export default function TinaDemo() {
     ]
   };
 
-  const currentTranscript = transcripts[selectedScenario] || [];
-  const currentInsights = insights[selectedScenario] || [];
+  const currentTranscript = transcripts[scenarioKeyMap[selectedScenario]] || [];
+  const currentInsights = insights[scenarioKeyMap[selectedScenario]] || [];
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-blue-800">Tina – AI Call Center Assistant</h1>
+        <h1 className="text-4xl font-bold text-blue-800">Meet Tina – Your AI Call Center</h1>
         <p className="text-lg text-gray-600 italic mt-2 font-bold">Empathy. Emotion. Engagement.</p>
         <div className="mt-2 w-full h-12 bg-white shadow-sm relative overflow-hidden flex items-center rounded-md">
           <div className="absolute whitespace-nowrap animate-marquee text-lg text-blue-700">
-            Reduces staff burnout&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Multilingual support&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Empathetic, natural-flowing conversations&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Automatically logs every call&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Improves after-hours coverage&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Supports emotional and bereavement needs&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Summarizes call intent for staff&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;HIPAA-compliant&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Healthcare-aware context&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Real-time escalation to on-call staff
+            Reduces staff burnout&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Multilingual support&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Empathetic, natural-flowing conversations&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Automatically logs every call&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Improves after-hours coverage&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Supports emotional and bereavement needs&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Summarizes call intent for staff&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;HIPAA-compliant&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Healthcare-aware context&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Real-time escalation to on-call staff&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;Fully customizable
           </div>
         </div>
       </div>
@@ -94,24 +101,19 @@ export default function TinaDemo() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {/* Call Simulator */}
         <div className="bg-white p-4 rounded-lg shadow-md h-full">
-          <h2 className="text-xl font-semibold mb-2">Call Simulation – {selectedScenario}</h2>
+          <h2 className="text-xl font-semibold mb-2">Call Simulation – {scenarioKeyMap[selectedScenario]}</h2>
 
-          <div className="mb-4">
-            <button onClick={playAudio} className="bg-blue-700 text-white px-4 py-2 rounded text-sm">
-              ▶️ Play Call Simulation
-            </button>
-          </div>
 
           <audio
             ref={fullCallAudio}
             src={
-              selectedScenario === "Urgent Supply Request"
+              scenarioKeyMap[selectedScenario] === "Urgent Supply Request"
                 ? "/urgent-supply.mp3"
-                : selectedScenario === "Test Result Callback"
+                : scenarioKeyMap[selectedScenario] === "Test Result Callback"
                 ? "/test-results.mp3"
-                : selectedScenario === "Notify of Loved One’s Passing"
+                : scenarioKeyMap[selectedScenario] === "Notify of Loved One’s Passing"
                 ? "/loved-one-passing.mp3"
-                : selectedScenario === "Emotional Support Request"
+                : scenarioKeyMap[selectedScenario] === "Emotional Support Request"
                 ? "/emotional-support.mp3"
                 : ""
             }
@@ -131,7 +133,7 @@ export default function TinaDemo() {
           <div className="mt-4 bg-white border border-gray-300 p-4 rounded-lg shadow-sm text-sm">
             <h3 className="text-lg font-semibold mb-2">AI Call Summary</h3>
 
-            {selectedScenario === "Urgent Supply Request" && (
+            {scenarioKeyMap[selectedScenario] === "Urgent Supply Request" && (
               <>
                 <p><strong>Caller Name:</strong> Craig Hayes</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
@@ -142,7 +144,7 @@ export default function TinaDemo() {
               </>
             )}
 
-            {selectedScenario === "Test Result Callback" && (
+            {scenarioKeyMap[selectedScenario] === "Test Result Callback" && (
               <>
                 <p><strong>Caller Name:</strong> Wayne Smith</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
@@ -153,7 +155,7 @@ export default function TinaDemo() {
               </>
             )}
 
-            {selectedScenario === "Notify of Loved One’s Passing" && (
+            {scenarioKeyMap[selectedScenario] === "Notify of Loved One’s Passing" && (
               <>
                 <p><strong>Caller Name:</strong> Alice Jones</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
@@ -164,7 +166,7 @@ export default function TinaDemo() {
               </>
             )}
 
-            {selectedScenario === "Emotional Support Request" && (
+            {scenarioKeyMap[selectedScenario] === "Emotional Support Request" && (
               <>
                 <p><strong>Caller Name:</strong> Paige Adams</p>
                 <p><strong>Callback Number:</strong> (615) 351-1785</p>
@@ -195,12 +197,27 @@ export default function TinaDemo() {
         </div>
       </div>
 
+      {/* Call-to-Action Message */}
+      <div className="mt-8 text-center">
+        <p className="text-xl font-semibold text-blue-900">
+          🧪 Try a Call Scenario: Click a button below to experience how Tina responds with empathy and intelligence.
+        </p>
+      </div>
+
       {/* Scenario Selector */}
       <div className="mt-6 flex flex-wrap justify-center gap-2">
         {scenarios.map((label) => (
           <button
             key={label}
-            onClick={() => setSelectedScenario(label)}
+            onClick={() => {
+              setSelectedScenario(label);
+              setTimeout(() => {
+                if (fullCallAudio.current) {
+                  fullCallAudio.current.currentTime = 0;
+                  fullCallAudio.current.play();
+                }
+              }, 0);
+            }}
             className={`px-4 py-2 rounded text-sm transition ${
               selectedScenario === label
                 ? "bg-blue-800 text-white"
